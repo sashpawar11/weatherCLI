@@ -1,17 +1,16 @@
 #  weatherCLI
 
 A cli-tool that prints weather forecast for specified location, built using go
-
-![weatherCLI](https://imgur.com/24BlxKS)
+![image](https://github.com/user-attachments/assets/9fcb62fe-e57d-44fb-9cf2-de8ed96a3ace)
 
 ##  Usage
 
     rain <location>
+
 args:
 
     <location> : area name eg. Goa
   
-
 
 ## API Key Config
  
