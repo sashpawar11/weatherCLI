@@ -8,6 +8,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/joho/godotenv"
 )
 
 type WeatherAPI struct {
@@ -39,13 +41,22 @@ type WeatherAPI struct {
 
 func main() {
 
+	// Load API Key
+	err := godotenv.Load()
+	if err != nil {
+		panic(err)
+	}
+
+	api_key := os.Getenv("API_KEY")
+
+	// Load cli args
 	var args = os.Args
 	loc := "goa"
 	if len(os.Args) >= 2 {
 		loc = args[1]
 	}
 
-	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=4e221ed9011447169fa162606242908&q=" + loc + "&days=7&aqi=yes&alerts=yes")
+	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=" + api_key + "&q=" + loc + "&days=7&aqi=yes&alerts=yes")
 	if err != nil {
 		panic(err)
 	}
