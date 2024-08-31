@@ -40,7 +40,10 @@ type WeatherAPI struct {
 func main() {
 
 	var args = os.Args
-	var loc = args[1]
+	loc := "goa"
+	if len(os.Args) >= 2 {
+		loc = args[1]
+	}
 
 	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=4e221ed9011447169fa162606242908&q=" + loc + "&days=7&aqi=yes&alerts=yes")
 	if err != nil {
